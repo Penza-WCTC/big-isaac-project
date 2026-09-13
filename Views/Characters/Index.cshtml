@@ -1,0 +1,32 @@
+<h1>The Binding of Isaac Characters</h1>
+
+@model List<Character>
+@{
+    ViewData["Title"] = "Characters";
+}
+
+<p class="text-muted">@Model.Count characters in The Binding of Isaac.</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Health</th>
+            <th>Speed</th>
+            <th>Damage</th>
+            <th>Details Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var character in Model)
+        {
+            <tr>
+                <td>@character.Name</td>
+                <td>@character.Health</td>
+                <td>@character.Speed</td>
+                <td>@character.Damage</td>
+                <td>href="/Characters/Details/@character.Id</td>
+            </tr>
+        }
+    </tbody>
+</table>

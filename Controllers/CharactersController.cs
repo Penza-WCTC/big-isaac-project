@@ -8,7 +8,7 @@ public class CharactersController : Controller
 {
     public IActionResult Index()
     {
-        return View();
+        return View(CharacterData.All);
     }
 
 }
