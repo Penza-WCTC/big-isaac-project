@@ -11,4 +11,15 @@ public class CharactersController : Controller
         return View(CharacterData.All);
     }
 
+    public IActionResult Details(int id)
+    {
+        var character = CharacterData.All.FirstOrDefault(t => t.Id == id);
+
+        if(character == null)
+        {
+            return NotFound();
+        }
+
+        return View(character);
+    }
 }

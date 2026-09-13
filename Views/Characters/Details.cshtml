@@ -1,0 +1,28 @@
+<h1>The Binding of Isaac Characters</h1>
+
+@model Character
+@{
+    ViewData["Title"] = "Cryptids";
+}
+
+<p class="text-muted">@Model.Name details</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Health</th>
+            <th>Speed</th>
+            <th>Damage</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Health</td>
+                <td>@Model.Speed</td>
+                <td>@Model.Damage</td>
+            </tr>
+        }
+    </tbody>
+</table>
