@@ -21,10 +21,7 @@
         @foreach (var character in Model)
         {
             <tr>
-                <td>@character.Name</td>
-                <td>@character.Health</td>
-                <td>@character.Speed</td>
-                <td>@character.Damage</td>
+                <partial name="_CharacterRow" model="character" />
                 <td><a href="/Characters/Details/@character.Id">Details</a></td>
             </tr>
         }

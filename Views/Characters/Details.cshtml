@@ -17,12 +17,9 @@
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <td>@Model.Name</td>
-                <td>@Model.Health</td>
-                <td>@Model.Speed</td>
-                <td>@Model.Damage</td>
-            </tr>
+        <tr>
+            <partial name="_CharacterRow" model="Model" />
+        </tr>
         }
     </tbody>
 </table>
