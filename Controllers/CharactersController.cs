@@ -15,11 +15,28 @@ public class CharactersController : Controller
     {
         var character = CharacterData.All.FirstOrDefault(t => t.Id == id);
 
-        if(character == null)
+        if (character == null)
         {
             return NotFound();
         }
 
         return View(character);
+    }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(Character character)
+    {
+        Console.WriteLine($"── model binding built a {character.GetType().Name} ──");
+        Console.WriteLine($"   Name      {character.Name}");
+        Console.WriteLine($"   Health   {character.Health}");
+        Console.WriteLine($"   Speed      {character.Speed}");
+        Console.WriteLine($"   Damage    {character.Damage}");
+
+        return Content("Submitted — look at the terminal 👀");
     }
 }
