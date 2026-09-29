@@ -29,14 +29,17 @@ public class CharactersController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Create(Character character)
     {
-        Console.WriteLine($"── model binding built a {character.GetType().Name} ──");
-        Console.WriteLine($"   Name      {character.Name}");
-        Console.WriteLine($"   Health   {character.Health}");
-        Console.WriteLine($"   Speed      {character.Speed}");
-        Console.WriteLine($"   Damage    {character.Damage}");
+        if (!ModelState.IsValid)
+        {
+            return View();
+        }
 
-        return Content("Submitted — look at the terminal 👀");
+        character.Id = CharacterData.All.Max(c => c.Id) +1;
+        CharacterData.All.Add(character);
+
+        return RedirectToAction(nameof(Index));
     }
 }
