@@ -17,12 +17,13 @@
             <th>Health</th>
             <th>Speed</th>
             <th>Damage</th>
+            <th>Favorite Detail:</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <partial name="_CharacterRow" model="Model" />
+            <td>@Model.FavoriteDetails</td>
         </tr>
-        }
     </tbody>
 </table>
