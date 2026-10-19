@@ -16,7 +16,7 @@ namespace big_isaac_project.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -31,6 +31,9 @@ namespace big_isaac_project.Migrations
 
                     b.Property<double>("Damage")
                         .HasColumnType("float");
+
+                    b.Property<string>("FavoriteDetails")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Health")
                         .HasColumnType("float");

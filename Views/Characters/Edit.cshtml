@@ -33,6 +33,12 @@
         <span asp-validation-for="Damage" class="text-danger"></span>
     </div>
 
+    <div class="mb-3">
+        <label asp-for="FavoriteDetails" class="form-label"></label>
+        <input asp-for="FavoriteDetails" class="form-control" />
+        <span asp-validation-for="FavoriteDetails" class="text-danger"></span>
+    </div>
+
     <button type="submit" class="btn btn-primary">Save Changes</button>
     <a asp-action="Index" class="btn btn-link">Cancel</a>
 </form>

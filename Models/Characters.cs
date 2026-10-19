@@ -21,4 +21,6 @@ public class Character
     [Required]
     [Range(-1,5, ErrorMessage = "Damage goes from {1} to {2}.")]
     public double Damage{get; set;}
+
+    public string? FavoriteDetails{get; set;}
 }

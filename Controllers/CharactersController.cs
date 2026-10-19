@@ -73,7 +73,7 @@ public class CharactersController : Controller
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Health,Speed,Damage")] Character character)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Health,Speed,Damage,FavoriteDetails")] Character character)
         {
             if (id != character.Id)
             {
