@@ -23,4 +23,6 @@ public class Character
     public double Damage{get; set;}
 
     public string? FavoriteDetails{get; set;}
+
+    public ICollection<Gimmicks> Gimmicks { get; set; } = new List<Gimmicks>();
 }

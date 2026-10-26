@@ -49,4 +49,5 @@ public class CharacterContext : DbContext
     }
 
     public DbSet<Character> Characters => Set<Character>();
+    public DbSet<Gimmicks> Gimmicks => Set<Gimmicks>();
 }
