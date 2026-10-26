@@ -10,6 +10,7 @@ public class Gimmicks{
     public DateTime ReleaseDate {get; set;}
 
     [Required(ErrorMessage = "What is the gimmick of this character?")]
+    [StringLength(500)]
     public string Gimmick {get; set;} = "";
 
     [Display(Name = "Character")]

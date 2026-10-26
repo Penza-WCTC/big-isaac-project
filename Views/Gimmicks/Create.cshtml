@@ -1,0 +1,37 @@
+@model GimmickFormViewModel
+@{
+    ViewData["Title"] = "Add a Gimmick";
+}
+
+<h1>Add a Gimmick </h1>
+
+<form asp-action="Create" method="post" class="col-md-6">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Gimmick.CharacterId" class="form-label"></label>
+        <select asp-for="Gimmick.CharacterId" asp-items="Model.Characters" class="form-select">
+            <option value="">— pick a truck —</option>
+        </select>
+        <span asp-validation-for="Gimmick.CharacterId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Gimmick.ReleaseDate" class="form-label"></label>
+        <input asp-for="Gimmick.ReleaseDate" class="form-control" />
+        <span asp-validation-for="Gimmick.ReleaseDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Gimmick.Gimmick" class="form-label"></label>
+        <input asp-for="Gimmick.Gimmick" class="form-control" />
+        <span asp-validation-for="Gimmick.Gimmick" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add it</button>
+    <a asp-controller="Characters" asp-action="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

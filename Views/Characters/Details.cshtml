@@ -9,6 +9,11 @@
 
 <p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Character.Id" class="btn btn-secondary">✏️ Edit this Character</a></p>
 <p><a asp-action="Delete" asp-route-id="@Model.Character.Id" class="btn btn-outline-danger">🗑️ Remove this Character</a></p>
+<p>
+    <a asp-controller="Gimmicks" asp-action="Create" asp-route-characterId="@Model.Character.Id" class="btn btn-primary">
+        Add a Gimmick
+    </a>
+</p>
 
 <table class="table table-striped">
     <thead>
@@ -22,7 +27,7 @@
     </thead>
     <tbody>
         <tr>
-            <partial name="_CharacterRow" model="Model" />
+            <partial name="_CharacterRow" model="Model.Character" />
             <td>@Model.Character.FavoriteDetails</td>
         </tr>
     </tbody>
