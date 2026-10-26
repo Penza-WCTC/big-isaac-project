@@ -1,14 +1,14 @@
 <h1>The Binding of Isaac Characters</h1>
 
-@model Character
+@model CharacterDetailsViewModel
 @{
     ViewData["Title"] = "Character Details";
 }
 
-<p class="text-muted">@Model.Name details</p>
+<p class="text-muted">@Model.Character.Name details</p>
 
-<p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this Character</a></p>
-<p><a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Remove this Character</a></p>
+<p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Character.Id" class="btn btn-secondary">✏️ Edit this Character</a></p>
+<p><a asp-action="Delete" asp-route-id="@Model.Character.Id" class="btn btn-outline-danger">🗑️ Remove this Character</a></p>
 
 <table class="table table-striped">
     <thead>
@@ -23,7 +23,22 @@
     <tbody>
         <tr>
             <partial name="_CharacterRow" model="Model" />
-            <td>@Model.FavoriteDetails</td>
+            <td>@Model.Character.FavoriteDetails</td>
         </tr>
     </tbody>
 </table>
+
+<h2 class="h5 mt-4">Character Gimmicks:</h2>
+
+@if (Model.Character.Gimmicks.Count > 0){
+    <ul class="list-group mb-4">
+        @foreach (var info in Model.Character.Gimmicks){
+            <li class="list-group-item d-flex justify-content-between">
+                <span>@info.ReleaseDate</span>
+                <span>@info.Gimmick</span>'
+            </li>
+        }
+    </ul>
+}else{
+    <p class="text-muted">Nothing Listed.</p>
+}

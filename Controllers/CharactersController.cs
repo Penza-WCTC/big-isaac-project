@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using big_isaac_project.Models;
 using big_isaac_project.Data;
 using Microsoft.EntityFrameworkCore;
+using big_isaac_project.ViewModels;
 
 namespace big_isaac_project.Controllers;
 
@@ -17,19 +18,25 @@ public class CharactersController : Controller
 
     public IActionResult Index()
     {
-        return View(_context.Characters.ToList());
+        return View(_context.Characters.Include(c => c.Gimmicks).ToList());
     }
 
     public IActionResult Details(int id)
     {
-        var character = _context.Characters.FirstOrDefault(c => c.Id == id);
+        var character = _context.Characters.Include(c => c.Gimmicks).FirstOrDefault(c => c.Id == id);
 
         if (character == null)
         {
             return NotFound();
         }
 
-        return View(character);
+        var viewModel = new CharacterDetailsViewModel
+        {
+            Character = character,
+            AlsoHere = _context.Characters.Include(c => c.Gimmicks).Where(c=> c.Id != character.Id).ToList()
+        };
+
+        return View(viewModel);
     }
 
     public IActionResult Create()
@@ -117,7 +124,7 @@ public class CharactersController : Controller
                 return NotFound();
             }
 
-            var character = await _context.Characters
+            var character = await _context.Characters.Include(c => c.Gimmicks)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (character == null)
             {
