@@ -1,10 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Characters in The Binding of Isaac";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <h1 class="display-4">Isaac Characters</h1>
+    <p class="lead">
+        Every character in The Binding of Isaac! Their names, their stats, and their gimmicks! Come on in and add a modded character if you wish!
+    </p>
+    <a asp-controller="Characters" asp-action="Index" class="btn btn-primary btn-lg">Browse the Characters</a>
+    <a asp-controller="Gimmicks" asp-action="Index" class="btn btn-outline-light btn-lg ms-2">Start from a dish</a>
 </div>
 
 @section Scripts {

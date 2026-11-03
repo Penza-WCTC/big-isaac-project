@@ -7,11 +7,11 @@ using big_isaac_project.ViewModels;
 
 namespace big_isaac_project.Controllers;
 
-public class GimmickController : Controller
+public class GimmicksController : Controller
 {
     private readonly CharacterContext _context;
 
-    public GimmickController(CharacterContext context)
+    public GimmicksController(CharacterContext context)
     {
         _context = context;
     }
