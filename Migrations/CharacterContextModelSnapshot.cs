@@ -323,7 +323,8 @@ namespace big_isaac_project.Migrations
 
                     b.Property<string>("Gimmick")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
