@@ -28,4 +28,14 @@
             </tr>
         }
     </tbody>
+    @if (!Model.Any())
+    {
+        <tbody>
+            <tr>
+                <td>
+                    Unfortunately, it would seem as though we don't have any characters yet.
+                </td>
+            </tr>
+        </tbody>
+    }
 </table>
