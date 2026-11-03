@@ -7,13 +7,14 @@
 
 <p class="text-muted">@Model.Character.Name details</p>
 
-<p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Character.Id" class="btn btn-secondary">✏️ Edit this Character</a></p>
-<p><a asp-action="Delete" asp-route-id="@Model.Character.Id" class="btn btn-outline-danger">🗑️ Remove this Character</a></p>
-<p>
-    <a asp-controller="Gimmicks" asp-action="Create" asp-route-characterId="@Model.Character.Id" class="btn btn-primary">
-        Add a Gimmick
-    </a>
+<div class="hstack gap-3">
+<p><a asp-action="Edit" asp-route-id="@Model.Character.Id" class="btn btn-secondary">✏️ Edit this
+    Character</a>
 </p>
+<p><a asp-action="Delete" asp-route-id="@Model.Character.Id" class="btn btn-outline-danger">🗑️ Remove this
+    Character</a>
+</p>
+</div>
 
 <table class="table table-striped">
     <thead>
@@ -34,16 +35,26 @@
 </table>
 
 <h2 class="h5 mt-4">Character Gimmicks:</h2>
-
-@if (Model.Character.Gimmicks.Count > 0){
+<p>
+    <a asp-controller="Gimmicks" asp-action="Create" asp-route-characterId="@Model.Character.Id"
+       class="btn btn-primary">
+        Add a Gimmick
+    </a>
+</p>
+@if (Model.Character.Gimmicks.Count > 0)
+{
+    
     <ul class="list-group mb-4">
-        @foreach (var info in Model.Character.Gimmicks){
+        @foreach (var info in Model.Character.Gimmicks)
+        {
             <li class="list-group-item d-flex justify-content-between">
                 <span>@info.ReleaseDate</span>
                 <span>@info.Gimmick</span>
             </li>
         }
     </ul>
-}else{
+}
+else
+{
     <p class="text-muted">Nothing Listed.</p>
 }

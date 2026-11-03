@@ -6,9 +6,22 @@
 <h1>Remove this Character? 🗑️</h1>
 <p class="text-muted">This takes it off the list for good. There is no undo.</p>
 
-<div class="col-md-4 mb-4">
-    <partial name="_CharacterRow" model="Model" />
-</div>
+
+<table class="table table-striped">
+        
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Health</th>
+            <th>Speed</th>
+            <th>Damage</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <partial name="_CharacterRow" model="Model" />
+    </tbody>
+</table>
 
 <form asp-action="Delete" method="post">
     <input type="hidden" asp-for="Id" />

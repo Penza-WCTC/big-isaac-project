@@ -16,7 +16,7 @@
             <th>Health</th>
             <th>Speed</th>
             <th>Damage</th>
-            <th>Details Link</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
         {
             <tr>
                 <partial name="_CharacterRow" model="character" />
-                <td><a href="/Characters/Details/@character.Id">Details</a></td>
+                <td><a href="/Characters/Details/@character.Id" class="btn btn-primary">Details</a></td>
             </tr>
         }
     </tbody>
