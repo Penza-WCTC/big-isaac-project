@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using big_isaac_project.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace big_isaac_project.Data;
 
-public class CharacterContext : DbContext
+public class CharacterContext : IdentityDbContext<AppUser>
 {
     public CharacterContext(DbContextOptions<CharacterContext> options) : base(options)
     {
@@ -11,6 +12,8 @@ public class CharacterContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Character>().HasData(
         new Character { Id = 1, Name = "Isaac", Health = 3, Speed = 2, Damage = 2 },
         new Character { Id = 2, Name = "Magdalene", Health = 4, Speed = 1, Damage = 2 },

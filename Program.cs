@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using big_isaac_project.Data;
+using Microsoft.AspNetCore.Identity;
+using big_isaac_project.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CharacterContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Identity: the users, and the cookie that remembers who is signed in.
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<CharacterContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +25,7 @@ app.UseStatusCodePagesWithReExecute("/Home/Missing");
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
