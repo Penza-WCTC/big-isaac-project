@@ -4,9 +4,11 @@ using big_isaac_project.Models;
 using big_isaac_project.Data;
 using Microsoft.EntityFrameworkCore;
 using big_isaac_project.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace big_isaac_project.Controllers;
 
+[Authorize]
 public class CharactersController : Controller
 {
     private readonly CharacterContext _context;
@@ -16,11 +18,13 @@ public class CharactersController : Controller
         _context = context;
     }
 
+    [AllowAnonymous]
     public IActionResult Index()
     {
         return View(_context.Characters.Include(c => c.Gimmicks).ToList());
     }
 
+    [AllowAnonymous]
     public IActionResult Details(int id)
     {
         var character = _context.Characters.Include(c => c.Gimmicks).FirstOrDefault(c => c.Id == id);
