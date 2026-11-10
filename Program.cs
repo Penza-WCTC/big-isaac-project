@@ -12,7 +12,11 @@ builder.Services.AddDbContext<CharacterContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Identity: the users, and the cookie that remembers who is signed in.
-builder.Services.AddIdentity<AppUser, IdentityRole>()
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 10;
+})
     .AddEntityFrameworkStores<CharacterContext>();
 var app = builder.Build();
 
