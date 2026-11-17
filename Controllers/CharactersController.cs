@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace big_isaac_project.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class CharactersController : Controller
 {
     private readonly CharacterContext _context;
