@@ -8,12 +8,19 @@
 <p class="text-muted">@Model.Character.Name details</p>
 
 <div class="hstack gap-3">
-<p><a asp-action="Edit" asp-route-id="@Model.Character.Id" class="btn btn-secondary">✏️ Edit this
-    Character</a>
-</p>
-<p><a asp-action="Delete" asp-route-id="@Model.Character.Id" class="btn btn-outline-danger">🗑️ Remove this
-    Character</a>
-</p>
+    @if (User.IsInRole("Admin"))
+    {
+        <p><a asp-action="Edit" asp-route-id="@Model.Character.Id" class="btn btn-secondary">✏️ Edit this
+            Character</a>
+        </p>
+    }
+
+    @if (User.IsInRole("Admin"))
+    {
+        <p><a asp-action="Delete" asp-route-id="@Model.Character.Id" class="btn btn-outline-danger">🗑️ Remove this
+            Character</a>
+        </p>
+    }
 </div>
 
 <table class="table table-striped">
