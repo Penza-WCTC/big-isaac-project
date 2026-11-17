@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using big_isaac_project.Models;
 using big_isaac_project.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace big_isaac_project.Controllers;
 
@@ -85,5 +86,13 @@ public class AccountController : Controller
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
+    }
+
+    // GET /Account/Claims — what the sign-in cookie says about you. A role
+    // is one claim among the others.
+    [Authorize]
+    public IActionResult Claims()
+    {
+        return View();
     }
 }

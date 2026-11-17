@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "What the cookie says";
+}
+
+<h1>What the cookie says</h1>
+<p class="text-muted">Every row is a claim: one fact about you, written into the sign-in cookie when you signed in.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in User.Claims)
+        {
+            <tr>
+                <td><code>@claim.Type</code></td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
