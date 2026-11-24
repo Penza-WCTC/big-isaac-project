@@ -45,5 +45,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+// Week 13: a minimal API endpoint. The same kind of answer as a controller
+// action, in one statement, with no class around it.
+app.MapGet("/api/characters/count", async (CharacterContext db) =>
+    new { count = await db.Characters.CountAsync() });
 
 app.Run();
